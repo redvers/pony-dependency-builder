@@ -29,7 +29,7 @@ DOCKERFILE_DIR="$(dirname "$0")"
 #  "${DOCKERFILE_DIR}"
 #docker push "${NAME}:${TAG_AS}"
 
-docker build -t ghcr.io/redvers/pony-dependency-builder:latest
+docker build -t ghcr.io/redvers/pony-dependency-builder:latest "${DOCKERFILE_DIR}"
 
 docker push ghcr.io/redvers/pony-dependency-builder:latest
 
