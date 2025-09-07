@@ -24,7 +24,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push
-        run: bash pony-dependency-builder/build-and-push.bash
+        run: bash -x pony-dependency-builder/build-and-push.bash
 
 # prune-untagged-images:
 #   needs:
