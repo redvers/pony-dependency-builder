@@ -25,19 +25,19 @@ jobs:
           password: ${{ secrets.USER_TOKEN }}
       - name: Build and push
         run: bash -x pony-dependency-builder/build-and-push.bash
- prune-untagged-images:
-   needs:
-     - release-a-library
+  prune-untagged-images:
+    needs:
+      - release-a-library
 
-   name: Prune untagged images
-   runs-on: ubuntu-latest
-   steps:
-     - name: Prune
-       # v4.1.1
-       uses: actions/delete-package-versions@0d39a63126868f5eefaa47169615edd3c0f61e20
-       with:
-         package-name: 'shared-docker-ci-release-a-library'
-         package-type: 'container'
-         min-versions-to-keep: 1
-         delete-only-untagged-versions: 'true'
+    name: Prune untagged images
+    runs-on: ubuntu-latest
+    steps:
+      - name: Prune
+        # v4.1.1
+        uses: actions/delete-package-versions@0d39a63126868f5eefaa47169615edd3c0f61e20
+        with:
+          package-name: 'shared-docker-ci-release-a-library'
+          package-type: 'container'
+          min-versions-to-keep: 1
+          delete-only-untagged-versions: 'true'
 
