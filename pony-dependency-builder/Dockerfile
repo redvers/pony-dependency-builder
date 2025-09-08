@@ -17,7 +17,8 @@ RUN apk add --update --no-cache \
     zlib-static \
     libxml2-static \
     libxml2-dev \
-    libxml2
+    libxml2 \
+    sqlite-dev
 
 RUN apk --no-cache del libbz2
 
@@ -29,3 +30,6 @@ RUN cd xz-5.8.1 && ./configure --prefix=/usr && make && make install
 
 RUN wget https://libzip.org/download/libzip-1.11.4.tar.gz && tar -zxvf libzip-1.11.4.tar.gz
 RUN cd libzip-1.11.4 && mkdir build && cd build && cmake .. -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX=/usr ; make ; make install
+
+RUN wget http://www.ch-werner.de/sqliteodbc/sqliteodbc-0.9999.tar.gz && tar -zxvf sqliteodbc-0.9999.tar.gz
+RUN cd sqliteodbc-0.9999 && ./configure --prefix=/usr ; make ; make install
