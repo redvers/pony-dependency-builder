@@ -13,23 +13,19 @@ DOCKERFILE_DIR="$(dirname "$0")"
 ## GitHub Container Registry
 
 # built from ponyc release tag
-#NAME="ghcr.io/redvers/pony-dependency-builder"
-#FROM_TAG=release-alpine
-#TAG_AS=release
-#docker build --pull --build-arg FROM_TAG="${FROM_TAG}" \
-#  -t "${NAME}:${TAG_AS}" \
-#  "${DOCKERFILE_DIR}"
-#docker push "${NAME}:${TAG_AS}"
-#
+NAME="ghcr.io/redvers/pony-dependency-builder"
+FROM_TAG=release-alpine
+TAG_AS=release
+docker build --pull --build-arg FROM_TAG="${FROM_TAG}" \
+  -t "${NAME}:${TAG_AS}" \
+  "${DOCKERFILE_DIR}"
+docker push "${NAME}:${TAG_AS}"
+
 # built from ponyc latest tag
-#FROM_TAG=alpine
-#TAG_AS=latest
-#docker build --pull --build-arg FROM_TAG="${FROM_TAG}" \
-#  -t "${NAME}:${TAG_AS}" \
-#  "${DOCKERFILE_DIR}"
-#docker push "${NAME}:${TAG_AS}"
-
-docker build -t ghcr.io/redvers/pony-dependency-builder:latest "${DOCKERFILE_DIR}"
-
-docker push ghcr.io/redvers/pony-dependency-builder:latest
+FROM_TAG=alpine
+TAG_AS=latest
+docker build --pull --build-arg FROM_TAG="${FROM_TAG}" \
+  -t "${NAME}:${TAG_AS}" \
+  "${DOCKERFILE_DIR}"
+docker push "${NAME}:${TAG_AS}"
 
