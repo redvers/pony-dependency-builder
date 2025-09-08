@@ -1,4 +1,6 @@
-FROM ghcr.io/ponylang/ponyc:release-alpine
+ARG FROM_TAG=release-alpine
+
+FROM ghcr.io/ponylang/ponyc:${FROM_TAG}
 
 LABEL org.opencontainers.image.source=https://github.com/redvers/pony-odbc-builder
 
