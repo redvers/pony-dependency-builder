@@ -25,7 +25,6 @@ jobs:
           password: ${{ secrets.USER_TOKEN }}
       - name: Build and push
         run: bash -x pony-dependency-builder/build-and-push.bash
-
  prune-untagged-images:
    needs:
      - release-a-library
