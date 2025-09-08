@@ -25,18 +25,4 @@ jobs:
           password: ${{ secrets.USER_TOKEN }}
       - name: Build and push
         run: bash -x pony-dependency-builder/build-and-push.bash
-  prune-untagged-images:
-    needs:
-      - pony-dependency-builder
-    name: Prune untagged images
-    runs-on: ubuntu-latest
-    steps:
-      - name: Prune
-        # v4.1.1
-        uses: actions/delete-package-versions@v5
-        with:
-          package-name: 'pony-dependency-builder'
-          package-type: 'docker'
-          min-versions-to-keep: 1
-          delete-only-untagged-versions: 'true'
 
