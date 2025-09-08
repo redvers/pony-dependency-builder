@@ -2,7 +2,7 @@ ARG FROM_TAG=release-alpine
 
 FROM ghcr.io/ponylang/ponyc:${FROM_TAG}
 
-LABEL org.opencontainers.image.source=https://github.com/redvers/pony-odbc-builder
+LABEL org.opencontainers.image.source=https://github.com/redvers/pony-dependency-builder
 
 RUN apk add --update --no-cache \
     unixodbc-dev \
@@ -14,12 +14,14 @@ RUN apk add --update --no-cache \
     zstd-static \
     openssl-libs-static \
     cmake \
-    zlib-static
+    zlib-static \
+    libxml2-static \
+    libxml2-dev \
+    libxml2
 
 RUN apk --no-cache del libbz2
 
 COPY .odbc.ini /root/
-
 
 RUN wget https://github.com/tukaani-project/xz/releases/download/v5.8.1/xz-5.8.1.tar.gz
 RUN tar -zxvf xz-5.8.1.tar.gz

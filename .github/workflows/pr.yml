@@ -31,5 +31,5 @@ jobs:
     steps:
       - uses: actions/checkout@v4.1.1
       - name: Docker build
-        run: "docker build --pull --file=pony-dependency-builder/Dockerfile ."
+        run: "cd pony-dependency-builder && docker build --pull ."
 
