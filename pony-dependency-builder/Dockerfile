@@ -14,7 +14,10 @@ RUN apk add --update --no-cache \
     zstd-static \
     openssl-libs-static \
     cmake \
-    zlib-static
+    zlib-static \
+    libxml2-static \
+    libxml2-dev \
+    libxml2
 
 RUN apk --no-cache del libbz2
 
