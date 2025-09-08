@@ -21,7 +21,7 @@ RUN apk add --update --no-cache \
 
 RUN apk --no-cache del libbz2
 
-COPY .odbc.ini /root/
+COPY pony-dependency-builder/.odbc.ini /root/
 
 
 RUN wget https://github.com/tukaani-project/xz/releases/download/v5.8.1/xz-5.8.1.tar.gz
