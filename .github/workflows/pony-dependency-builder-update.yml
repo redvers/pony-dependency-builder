@@ -22,7 +22,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.USER_TOKEN }}
       - name: Build and push
         run: bash -x pony-dependency-builder/build-and-push.bash
 
