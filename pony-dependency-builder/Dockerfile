@@ -22,8 +22,6 @@ RUN apk add --update --no-cache \
 
 RUN apk --no-cache del libbz2
 
-COPY .odbc.ini /root/
-
 RUN wget https://github.com/tukaani-project/xz/releases/download/v5.8.1/xz-5.8.1.tar.gz
 RUN tar -zxvf xz-5.8.1.tar.gz
 RUN cd xz-5.8.1 && ./configure --prefix=/usr && make && make install
@@ -33,3 +31,5 @@ RUN cd libzip-1.11.4 && mkdir build && cd build && cmake .. -DBUILD_SHARED_LIBS=
 
 RUN wget http://www.ch-werner.de/sqliteodbc/sqliteodbc-0.9999.tar.gz && tar -zxvf sqliteodbc-0.9999.tar.gz
 RUN cd sqliteodbc-0.9999 && ./configure --prefix=/usr ; make ; make install
+
+COPY .odbc.ini /root/
