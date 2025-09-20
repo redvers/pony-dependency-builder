@@ -1,17 +1,10 @@
-#ARG FROM_TAG=release-alpine
+ARG FROM_TAG=release-alpine
 
-FROM alpine:3.22
-
-ENV PATH="/root/.local/share/ponyup/bin:$PATH"
+FROM ghcr.io/ponylang/ponyc:${FROM_TAG}
 
 LABEL org.opencontainers.image.source=https://github.com/redvers/pony-dependency-builder
 
 RUN apk add --update --no-cache \
-    clang \
-    curl \
-    build-base \
-    binutils-gold \
-    git \
     unixodbc-dev \
     psqlodbc \
     bash \
@@ -26,13 +19,6 @@ RUN apk add --update --no-cache \
     libxml2-dev \
     libxml2 \
     sqlite-dev
-
-RUN sh -c "$(curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/ponylang/ponyup/latest-release/ponyup-init.sh)" \
- && ponyup update ponyc nightly \
- && ponyup update corral nightly \
- && ponyup update changelog-tool nightly
-
-WORKDIR /src/main
 
 RUN apk --no-cache del libbz2
 
